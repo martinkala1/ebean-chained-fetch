@@ -23,5 +23,5 @@ class Person(
     @Column(name = "GID")
     val gid: String = UUID.randomUUID().toString()
 
-    override fun toString() = "$firstName $lastName"
+    override fun toString() = "$firstName $lastName has ${cars.size} cars and ${pets.size} pets."
 }

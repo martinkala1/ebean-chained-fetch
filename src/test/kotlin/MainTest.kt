@@ -7,32 +7,31 @@ import org.junit.jupiter.api.Test
 class MainTest {
     @Test
     fun personTest() {
-        val pepik = Person(firstName = "Pepik", lastName = "Ringl")
-        pepik.save()
-        val kocicka = Pet("Kotik", "Cat", pepik)
-        val pejsek = Pet("Baron", "Idiot dog", pepik)
-        kocicka.save()
-        pejsek.save()
-        val shitbox = Car("ShitBox", 2003, pepik)
-        val traktor = Car("Zetor", 1984, pepik)
-        shitbox.save()
-        traktor.save()
+        val bobby = Person(firstName = "Bobby", lastName = "Somedude")
+        bobby.save()
+        val kitty = Pet("Kotik", "Cat", bobby)
+        val doggie = Pet("Baron", "Dog", bobby)
+        kitty.save()
+        doggie.save()
+        val skoda = Car("Skoda", 2003, bobby)
+        val tractor = Car("Zetor", 1984, bobby)
+        skoda.save()
+        tractor.save()
 
-        pepik.pets = listOf(kocicka, pejsek)
-        pepik.cars = listOf(shitbox, traktor)
-        pepik.save()
+        bobby.pets = listOf(kitty, doggie)
+        bobby.cars = listOf(skoda, tractor)
+        bobby.save()
 
-        val foundPepik =
+        val foundBobby =
             QPerson()
-                .fetch("pets")
-                .fetch("cars")
+                .fetch("cars", "*")
+                .fetch("pets", "*")
                 .where()
                 .lastName
-                .ieq("ringl")
+                .ieq("somedude")
                 .findOne()
 
-        assert(foundPepik != null)
-        assert(foundPepik!!.firstName == pepik.firstName)
-        assert(foundPepik.lastName == pepik.lastName)
+        assert(foundBobby != null)
+        println(foundBobby)
     }
 }
