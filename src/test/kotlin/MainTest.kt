@@ -2,7 +2,7 @@ import org.example.Person
 import org.example.query.QPerson
 import org.junit.jupiter.api.Test
 
-class PersonTest {
+class MainTest {
     @Test
     fun personTest() {
         val pepik = Person(firstName = "Pepik", lastName = "Ringl")
